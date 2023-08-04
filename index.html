@@ -468,6 +468,7 @@
       window.open("https://cotzhang.cn/myipadweb#"+server+","+account); 
     }
     window.onload = function() {
+      console.log("onload")
       let arr = document.querySelectorAll(".laterputimgs");
       for (var i = 1; i <= arr.length; i++) {
         arr[i].src = "img/img_showcase_"+i+".jpg";
