@@ -21,7 +21,8 @@
 		<a href="https://cotzhang.cn/">平板+</a>
 	</div>
 	<script type="text/javascript">
-	location.href="https://cotzhang.cn"
+	if (location.href.indexOf("utm_source=cotxtech") != -1) { alert("尊敬的用户，\r\n\r\n鉴于技术升级，我们特此通知，本网站域名已正式变更为cotzhang.cn。请您务必牢记此新域名信息，以确保能够正常访问我们提供的各项服务。\r\n\r\n在此过渡期间，我们将尽最大努力确保旧域名对新域名的重定向，以减少因域名变更带来的不便。然而，为了避免可能的风险和中断，请您及时更新您的书签、收藏夹以及其他相关链接，将旧域名更改为cotzhang.cn\r\n\r\n感谢您一直以来对本站的支持与信任，我们将继续努力提供优质的服务。如有任何疑问或困惑，请随时我们的客服团队，我们将竭诚为您解答。\r\n\r\n再次感谢您的理解和支持！\r\n\r\n祝您使用愉快！");
+		location.href = location.href.replace("utm_source=cotxtech", "new"); };
 	</script>
 </body>
 
