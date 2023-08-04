@@ -108,12 +108,12 @@
             <div class="probootstrap-home-showcase-inner">
               <div class="probootstrap-image-showcase">
                 <ul class="probootstrap-images-list">
-                  <li class="active"><img src="" alt="Image" class="img-responsive laterputimgs"></li>
-                  <li><img src="" alt="Image" class="img-responsive laterputimgs"></li>
-                  <li><img src="" alt="Image" class="img-responsive laterputimgs"></li>
-                  <li><img src="" alt="Image" class="img-responsive laterputimgs"></li>
-                  <li><img src="" alt="Image" class="img-responsive laterputimgs"></li>
-                  <li><img src="" alt="Image" class="img-responsive laterputimgs"></li>
+                  <li class="active"><img src="img/img_showcase_1.jpg" alt="页面仍在加载中，请稍等" class="img-responsive"></li>
+                  <li><img src="" alt="页面仍在加载中，请稍等" class="img-responsive laterputimgs"></li>
+                  <li><img src="" alt="页面仍在加载中，请稍等" class="img-responsive laterputimgs"></li>
+                  <li><img src="" alt="页面仍在加载中，请稍等" class="img-responsive laterputimgs"></li>
+                  <li><img src="" alt="页面仍在加载中，请稍等" class="img-responsive laterputimgs"></li>
+                  <li><img src="" alt="页面仍在加载中，请稍等" class="img-responsive laterputimgs"></li>
                 </ul>
               </div>
             </div>
@@ -470,8 +470,8 @@
     window.onload = function() {
       console.log("onload")
       let arr = document.querySelectorAll(".laterputimgs");
-      for (var i = 1; i <= arr.length; i++) {
-        arr[i].src = "img/img_showcase_"+i+".jpg";
+      for (var i = 2; i <= arr.length; i++) {
+        arr[i-1].src = "img/img_showcase_"+i+".jpg";
       }
     }
   </script>
