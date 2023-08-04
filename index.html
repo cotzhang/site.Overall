@@ -470,8 +470,8 @@
     window.onload = function() {
       console.log("onload")
       let arr = document.querySelectorAll(".laterputimgs");
-      for (var i = 2; i <= arr.length; i++) {
-        arr[i-1].src = "img/img_showcase_"+i+".jpg";
+      for (var i = 1; i <= arr.length; i++) {
+        arr[i-1].src = "img/img_showcase_"+(i+1)+".jpg";
       }
     }
   </script>
