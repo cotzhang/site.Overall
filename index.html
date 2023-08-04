@@ -108,12 +108,12 @@
             <div class="probootstrap-home-showcase-inner">
               <div class="probootstrap-image-showcase">
                 <ul class="probootstrap-images-list">
-                  <li class="active"><img src="img/img_showcase_1.jpg" alt="Image" class="img-responsive"></li>
-                  <li><img src="img/img_showcase_2.jpg" alt="Image" class="img-responsive"></li>
-                  <li><img src="img/img_showcase_3.jpg" alt="Image" class="img-responsive"></li>
-                  <li><img src="img/img_showcase_4.jpg" alt="Image" class="img-responsive"></li>
-                  <li><img src="img/img_showcase_5.jpg" alt="Image" class="img-responsive"></li>
-                  <li><img src="img/img_showcase_6.jpg" alt="Image" class="img-responsive"></li>
+                  <li class="active"><img src="" alt="Image" class="img-responsive laterputimgs"></li>
+                  <li><img src="" alt="Image" class="img-responsive laterputimgs"></li>
+                  <li><img src="" alt="Image" class="img-responsive laterputimgs"></li>
+                  <li><img src="" alt="Image" class="img-responsive laterputimgs"></li>
+                  <li><img src="" alt="Image" class="img-responsive laterputimgs"></li>
+                  <li><img src="" alt="Image" class="img-responsive laterputimgs"></li>
                 </ul>
               </div>
             </div>
@@ -466,6 +466,12 @@
       let server = document.getElementById("servertxt").value;
       let account = document.getElementById("padaccount").value;
       window.open("https://cotzhang.cn/myipadweb#"+server+","+account); 
+    }
+    window.onload = function() {
+      let arr = document.querySelectorAll(".laterputimgs");
+      for (var i = 1; i <= arr.length; i++) {
+        arr[i].src = "img/img_showcase_"+i+".jpg";
+      }
     }
   </script>
 </body>
