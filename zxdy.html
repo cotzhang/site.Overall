@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>跳转页面</title>
+    <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script src="https://passport.cnblogs.com/scripts/jsencrypt.min.js"></script>
+</head>
+
+<body>
+    <a id="jumpLink" href="#"></a>
+    <script>
+       // 根据提供的代码逻辑模拟生成链接
+const publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCO0BTQU0Oxu+LFrov28Ms0ehHGOPhI7JdIWQlXuF9DI0HxyAgYAcDxEw5eckQaX0zyU2/4B2ZoF4zTe99aaxaw7UUcrbJn7ZiYTxF6UtPn5dk7gijYWcTn4Opi8VOLvI+Q+a4jgQ6awMhinVWIHPoJLijU2kwGC+3Y5uZ/NRvhRQIDAQAB";
+function resetContent(str) {
+   
+    const timeInMillis = new Date().getTime();
+    str+=("&");
+    str+=(timeInMillis);
+  
+    let encryptedStr;
+    const encrypt = new JSEncrypt();
+    encrypt.setPublicKey(publicKey);
+    
+       encryptedStr = encrypt.encrypt(str).replaceAll("\r", "").replaceAll("/","%2F");
+        str = "http://classroom.guangzhouzx.cn:8026/#/login?code=" + encryptedStr;
+
+    return str;
+}
+let id2;
+if(!localStorage.getItem("mem")){
+id2=prompt("请输入在线答疑学号","013222");
+if(confirm("要记住用户名吗？")){
+ localStorage.setItem("mem",id2);
+}
+}else{
+id2=localStorage.getItem("mem")
+}
+const link = resetContent(id2);
+window.location.href=link;
+
+    </script>
+</body>
+
+</html>
+ 
