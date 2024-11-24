@@ -29,12 +29,12 @@ function resetContent(str) {
     return str;
 }
 let id2;
-if(!localStorage.getItem("mem")){
+if(!localStorage.getItem("mem") && location.hash!="#halt"){
 id2=prompt("请输入在线答疑学号","013222");
 if(confirm("要记住用户名吗？")){
  localStorage.setItem("mem",id2);
 }
-}else{
+}else if(location.hash!="#halt"){
 id2=localStorage.getItem("mem")
 }
 const link = resetContent(id2);
