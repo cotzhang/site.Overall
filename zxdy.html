@@ -29,8 +29,9 @@ function resetContent(str) {
     return str;
 }
 let id2;
-if(!localStorage.getItem("mem") && location.hash!="#halt"){
+if(!localStorage.getItem("mem")){
 id2=prompt("请输入在线答疑学号","013222");
+if(!id2) return;
 if(confirm("要记住用户名吗？")){
  localStorage.setItem("mem",id2);
 }
