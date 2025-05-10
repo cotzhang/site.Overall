@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-cmn">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="shortcut icon" href="img/icon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PadPlus 2</title>
+  <meta name="description" content="睿易少年派平板桌面客户端，支持一件打开导出课件、题目作答、自动同步、免破解上传文件到平板、观看课堂实录等功能，帮助学生利用平板更高效率进行学习">
+  <meta name="keywords" content="睿易,平板,睿易平板,客户端,睿易少年派,平板+">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,700">
+  <link rel="stylesheet" href="css/styles-merged.css">
+  <link rel="stylesheet" href="css/style.min.css">
+  <!--[if lt IE 9]>
+      <script src="js/vendor/html5shiv.min.js"></script>
+      <script src="js/vendor/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+  <!-- Fixed navbar -->
+  <!-- navbar-fixed-top  -->
+  <nav class="navbar probootstrap-megamenu navbar-default probootstrap-navbar">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html" title="PadPlus 2"></a>
+      </div>
+      <div id="navbar-collapse" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="index.html">首页</a></li>
+          <li class="dropdown">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle">平板+</a>
+            <ul class="dropdown-menu">
+              <!-- <li><a href="about.html">功能介绍</a></li> -->
+              <li class="dropdown-submenu dropdown">
+                <a href="download.html" data-toggle="dropdown" class="dropdown-toggle"><span>下载软件</span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="download.html">Windows</a></li>
+                  <li><a href="download.html">Android</a></li>
+                  <li><a href="download.html">Linux</a></li>
+                  <!--li><a href="#">Mac</a></li-->
+                </ul>
+              </li>
+              <!-- <li><a href="download.html">学校管控系统接入</a></li> -->
+              <li><a href="http://github.com/cotzhang/app.Cot-Myipad-Plus/releases">历史版本</a></li>
+              <li><a href="https://cotzhang.cn/padplusold">旧版 PadPlus</a></li>
+            </ul>
+          </li>
+          <!--           <li><a href="padweb.html">少年派网页版</a></li>
+ -->
+          <li><a href="#" data-toggle="modal" data-target="#loginModal">少年派网页版</a></li>
+          <li class="probootstra-cta-button"><a href="#" class="btn" data-toggle="modal" data-target="#loginModal">登录</a></li>
+          <li class="probootstra-cta-button last"><a href="download.html" class="btn btn-ghost">免费下载</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+    <section>
+    <div class="container" style='background:red !important;'>
+      <div class="row" style='background:red !important;color:white;'>
+        <div class="col-md-12" >
+          <h3 class="probootstrap-animate" data-animate-effect="fadeInRight" style='color:white'>由于睿易少年派已终止运营，该项目现已停止维护并无法正常使用，谨此感谢您一直以来的支持与关注。</h3>
+    
+        </div>
+      </div>
+    </div>
+    </section>
+  <section class="probootstrap-hero">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 text-center probootstrap-hero-text pb0 probootstrap-animate" data-animate-effect="fadeIn">
+          <h1>PadPlus 2<br>用科技赋能教育</h1>
+          <p style="margin-bottom:10px">睿易少年派平板桌面客户端，支持导出课件、题目作答、错题本查看导出、文件上传、观看课堂实录、在线答疑等功能，帮助学生利用平板更高效率学习</p>
+          <p>
+            <a href="download.html" class="btn btn-primary btn-lg" role="button">立即下载</a>
+            <a href="#" class="btn btn-primary btn-ghost btn-lg" role="button" data-toggle="modal" data-target="#loginModal">网页版登录</a>
+          </p>
+          <!-- <p><a href="#"><i class="icon-play2"></i> Watch the video</a></p> -->
+        </div>
+      </div>
+      <div class="row probootstrap-feature-showcase">
+        <div class="col-md-4 col-md-push-8 probootstrap-showcase-nav probootstrap-animate">
+          <ul>
+            <li class="active">
+              <a href="#">自主学习</a>
+              <p>预览查看并导出所有课件文件，支持视频免下载预览，查看将要发布的课件文件，接收新课件（备课）通知，查看已删除或隐藏备课；进行自主学习题目作答，支持作答选择题及主观题，大题支持连接手机远程拍照作答、上传图片作答或文字作答。</p>
+            </li>
+            <li>
+              <a href="#">资源库文件上传</a>
+              <p>查看、导出平板资源库内容，创建文件夹、上传文件及上传文件夹（仅允许上传学习相关文件，若后台审核发现违规文件将会禁用平板资源库功能使用权限）</p>
+            </li>
+            <li>
+              <a href="#">试题本查看</a>
+              <p>预览、保存、批量导出平板试题本图片，支持显示图片拍摄日期，查看及导出平板端已删除图片</p>
+            </li>
+            <li>
+              <a href="#">在线答疑</a>
+              <p>与教师进行交流互动，在线答疑收发消息，创建讨论组进行学习交流（讨论组的创建需要使用教师账号权限，不允许学生操作）</p>
+            </li>
+            <li>
+              <a href="#">学校班级成员查看</a>
+              <p>查询学校及班级成员账号、班级，生成登录二维码；查询教师手机号码，方便联系与沟通</p>
+            </li>
+            <li>
+              <a href="#">设备互联</a>
+              <p>与 Android 手机进行远程连接，支持远程拍照作答自主学习主观题等连接功能，提高学生学习效率</p>
+            </li>
+            <li>
+              <a href="#">平板定位</a>
+              <p>对全校平板进行全校范围内定位，按照地图位置查询平板及指定用户进行平板定位</p>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-8 col-md-pull-4 probootstrap-animate" style="position: relative;">
+          <div class="probootstrap-home-showcase-wrap">
+            <div class="probootstrap-home-showcase-inner">
+              <div class="probootstrap-image-showcase">
+                <ul class="probootstrap-images-list">
+                  <li class="active"><img src="img/img_showcase_1.jpg" alt="页面仍在加载中，请稍等" class="img-responsive"></li>
+                  <li><img src="" alt="页面仍在加载中，请稍等" class="img-responsive laterputimgs"></li>
+                  <li><img src="" alt="页面仍在加载中，请稍等" class="img-responsive laterputimgs"></li>
+                  <li><img src="" alt="页面仍在加载中，请稍等" class="img-responsive laterputimgs"></li>
+                  <li><img src="" alt="页面仍在加载中，请稍等" class="img-responsive laterputimgs"></li>
+                  <li><img src="" alt="页面仍在加载中，请稍等" class="img-responsive laterputimgs"></li>
+                  <li><img src="" alt="页面仍在加载中，请稍等" class="img-responsive laterputimgs"></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="probootstrap-section probootstrap-bg-white probootstrap-zindex-above-showcase">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
+          <h2>PadPlus 2 新增功能</h2>
+          <p class="lead">PadPlus 2 重构了 PadPlus 的基础架构与用户界面，提升了启动速度与使用时性能，减少卡顿与内存占用，提高了使用效率</p>
+        </div>
+      </div>
+      <!-- END row -->
+      <div class="row probootstrap-gutter60">
+        <div class="col-md-4 probootstrap-animate" data-animate-effect="fadeInLeft">
+          <div class="service text-center">
+            <div class="icon"><i class="icon-camera2"></i></div>
+            <div class="text">
+              <h3>试题本功能</h3>
+              <p>PadPlus 2 新增了试题本功能，支持在桌面客户端查看平板所拍摄的试题本图片，并一键批量导出到指定文件夹</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 probootstrap-animate" data-animate-effect="fadeIn">
+          <div class="service text-center">
+            <div class="icon"><i class="icon-user2"></i></div>
+            <div class="text">
+              <h3>学校成员功能</h3>
+              <p>支持查询学校成员姓名、所在的所有班级，查看教师手机号，查看平板在线学生、教师人数及信息及在线睿易通信息</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 probootstrap-animate" data-animate-effect="fadeInRight">
+          <div class="service text-center">
+            <div class="icon"><i class="icon-compass"></i></div>
+            <div class="text">
+              <h3>平板定位功能</h3>
+              <p>对在线并已登录账号的平板进行校内定位，并可在地图查看各教室的人数及人员信息、学校各区域的人数及人员信息</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 probootstrap-animate" data-animate-effect="fadeInLeft">
+          <div class="service text-center">
+            <div class="icon"><i class="icon-tablet"></i></div>
+            <div class="text">
+              <h3>设备连接功能</h3>
+              <p>远程连接 Android 手机中的 PadPlus，与 Android 手机进行远程连接，支持远程拍照作答自主学习主观题等功能</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 probootstrap-animate" data-animate-effect="fadeIn">
+          <div class="service text-center">
+            <div class="icon"><i class="icon-chat"></i></div>
+            <div class="text">
+              <h3>在线答疑功能</h3>
+              <p>在电脑上收发在线答疑消息，进行在线答疑，支持接收文本信息、表情及图片、收发文本信息、创建讨论组</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 probootstrap-animate" data-animate-effect="fadeInRight">
+          <div class="service text-center">
+            <div class="icon"><i class="icon-briefcase2"></i></div>
+            <div class="text">
+              <h3>其他功能</h3>
+              <p>一键下载所有自主学习文件、用户GUID查询、资源库批量上传文件夹、睿易云GUID跳转、CloudRetv等</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="probootstrap-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 text-center section-heading probootstrap-animate">
+          <h2>用户界面设计</h2>
+          <p class="lead">PadPlus 2 采用了 cotzhang 开发的 Panelistic 3.0 设计框架，经过优化的功能界面和设计逻辑提供了全新的使用体验。<br>通过从底层重新构建应用渲染方式，PadPlus 2不仅提速了运行速度和提升了效率，同时还使功能更加直观易用，让用户操作更加轻松自如。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="probootstrap-section probootstrap-bg-white probootstrap-zindex-above-showcase">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 text-center section-heading probootstrap-animate">
+          <h2>功能列表</h2>
+          <p class="lead">功能列表仅供参考，内容可能会随软件更新而变化修改，请以实际软件版本及相应使用功能为准</p>
+        </div>
+      </div>
+      <!-- END row -->
+      <div class="row">
+        <div class="text-center">
+          <div class="service left-icon probootstrap-animate" data-animate-effect="fadeInLeft">
+            <div class="text col-md-12">
+              <h3>自主学习</h3>
+              <p>高效率抓取自主学习内容</p>
+              <p>查看所有备课文件</p>
+              <p>查看未来备课文件（考试试卷屏蔽）</p>
+              <p>查看已删除备课文件</p>
+              <p>查看已隐藏备课文件</p>
+              <p>导出所有备课课件与视频</p>
+              <p>备课视频免下载在线预览</p>
+              <p>备课GUID查看</p>
+              <p>资源GUID查看</p>
+              <p>备课具体详情查看</p>
+              <p>新备课通知提醒</p>
+              <p>自主学习备课搜索</p>
+              <p>自主学习备课正则搜索</p>
+              <p>进行自主学习题目作答</p>
+              <p>查看作业批改情况</p>
+              <p>查看作业分数及得分率</p>
+              <p>答题卡上传答题图片作答主观题</p>
+              <p>答题卡作业批改通知提醒</p>
+              <p>答题卡选择题目自动校对</p>
+              <p>答题卡多选题目自动校对选项</p>
+              <p>答题卡文本作答大题</p>
+              <p>答题卡远程连接手机拍摄主观题照片</p>
+              <p>答题卡重新修改已提交未批改的题目或大题</p>
+              <p>答题卡答题卡前端固定</p>
+              <p>答题卡一键清空已有答案</p>
+              <p>完成睿易云练习</p>
+              <p>优化的睿易云练习界面</p>
+              <p>将睿易云练习的链接导出</p>
+              <p>列表界面查看完成人数、完成率</p>
+              <p>睿易云学情分析考试成绩、练习成绩</p>
+            </div>
+          </div>
+          
+          <div class="service left-icon probootstrap-animate" data-animate-effect="fadeInLeft">
+            <div class="text col-md-12">
+              <h3>资源库</h3>
+              <p>查看平板资源库内容</p>
+              <p>导出平板资源库文件</p>
+              <p>创建目录、路径</p>
+              <p>多选批量上传文件</p>
+              <p>批量上传文件夹所有文件</p>
+              <p>免破解上传文件到平板</p>
+              <p>复制路径kpGUID</p>
+              <p>复制文件GUID</p>
+              <p>查看文件及路径属性</p>
+            </div>
+          </div>
+          
+          <div class="service left-icon probootstrap-animate" data-animate-effect="fadeInLeft">
+            <div class="text col-md-12">
+              <h3>试题本</h3>
+              <p>查看试题本图片</p>
+              <p>查看试题本已删除图片</p>
+              <p>查看试题本图片日期</p>
+              <p>保存试题本图片</p>
+              <p>批量导出试题本图片</p>
+            </div>
+          </div>
+          
+          <div class="service left-icon probootstrap-animate" data-animate-effect="fadeInLeft">
+            <div class="text col-md-12">
+              <h3>学校及班级成员</h3>
+              <p>查看学校及班级成员</p>
+              <p>查看学校及班级成员班级</p>
+              <p>查看学校及班级成员学号</p>
+              <p>查看学校及班级成员账号信息</p>
+              <p>查看学校及班级成员最近登录时间</p>
+              <p>查看学校及班级成员最近登录IP</p>
+              <p>查看学校及班级成员GUID</p>
+            </div>
+          </div>
+          
+          <div class="service left-icon probootstrap-animate" data-animate-effect="fadeInLeft">
+            <div class="text col-md-12">
+              <h3>平板定位</h3>
+              <p>通过姓名定位平板</p>
+              <p>通过睿易账号定位平板</p>
+              <p>查看平板在地图上的分布</p>
+              <p>查看指定教室的平板信息</p>
+              <p>查看指定教学楼的平板信息</p>
+            </div>
+          </div>
+          
+          <div class="service left-icon probootstrap-animate" data-animate-effect="fadeInLeft">
+            <div class="text col-md-12">
+              <h3>课堂实录</h3>
+              <p>观看课堂录制</p>
+              <p>课堂实录导出</p>
+              <p>支持显示并观看全校所有课堂实录</p>
+              <p>课堂实录显示资源切换节点</p>
+              <p>课堂实录显示幻灯片节点</p>
+              <p>课堂实录跳转节点播放</p>
+            </div>
+          </div>
+          
+          <div class="service left-icon probootstrap-animate" data-animate-effect="fadeInLeft">
+            <div class="text col-md-12">
+              <h3>在线答疑</h3>
+              <p>查看在线答疑消息</p>
+              <p>发送在线答疑消息</p>
+              <p>创建讨论组（教师）</p>
+              <p>讨论组改名功能（教师）</p>
+              <p>讨论组移除成员功能（教师）</p>
+              <p>讨论组删除功能（教师）</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--section class="probootstrap-section probootstrap-border-top probootstrap-bg-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 text-center section-heading probootstrap-animate">
+          <h2>其他功能</h2>
+          <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto provident qui tempore natus quos quibusdam soluta at.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 probootstrap-animate" data-animate-effect="fadeIn">
+          <div class="probootstrap-testimony-wrap text-center">
+            <figure>
+              <img src="img/person_1.jpg" alt="Free Bootstrap Template">
+            </figure>
+            <blockquote class="quote">&ldquo;Design must be functional and functionality must be translated into visual aesthetics, without any reliance on gimmicks that have to be explained.&rdquo; <cite class="author">&mdash; Ferdinand A. Porsche <br> <span>Design Lead at AirBNB</span></cite></blockquote>
+          </div>
+        </div>
+        <div class="col-md-4 probootstrap-animate" data-animate-effect="fadeIn">
+          <div class="probootstrap-testimony-wrap text-center">
+            <figure>
+              <img src="img/person_2.jpg" alt="Free Bootstrap Template">
+            </figure>
+            <blockquote class="quote">&ldquo;Creativity is just connecting things. When you ask creative people how they did something, they feel a little guilty because they didn’t really do it, they just saw something. It seemed obvious to them after a while.&rdquo; <cite class="author">&mdash; Steve Jobs <br> <span>Co-Founder Square</span></cite></blockquote>
+          </div>
+        </div>
+        <div class="col-md-4 probootstrap-animate" data-animate-effect="fadeIn">
+          <div class="probootstrap-testimony-wrap text-center">
+            <figure>
+              <img src="img/person_3.jpg" alt="Free Bootstrap Template">
+            </figure>
+            <blockquote class="quote">&ldquo;I think design would be better if designers were much more skeptical about its applications. If you believe in the potency of your craft, where you choose to dole it out is not something to take lightly.&rdquo; <cite class="author">&mdash; Frank Chimero <br> <span>Creative Director at Twitter</span></cite></blockquote>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section-->
+  <!--section class="probootstrap-section proboostrap-clients probootstrap-bg-white probootstrap-border-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 section-heading probootstrap-animate">
+          <h2>Our Clients</h2>
+          <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto provident qui tempore natus quos quibusdam soluta at.</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto provident qui tempore natus quos quibusdam soluta at.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 col-sm-6 col-xs-6 text-center client-logo probootstrap-animate" data-animate-effect="fadeIn">
+          <img src="img/client_1.png" class="img-responsive" alt="Free Bootstrap Template">
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-6 text-center client-logo probootstrap-animate" data-animate-effect="fadeIn">
+          <img src="img/client_2.png" class="img-responsive" alt="Free Bootstrap Template">
+        </div>
+        <div class="clearfix visible-sm-block visible-xs-block"></div>
+        <div class="col-md-3 col-sm-6 col-xs-6 text-center client-logo probootstrap-animate" data-animate-effect="fadeIn">
+          <img src="img/client_3.png" class="img-responsive" alt="Free Bootstrap Template">
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-6 text-center client-logo probootstrap-animate" data-animate-effect="fadeIn">
+          <img src="img/client_4.png" class="img-responsive" alt="Free Bootstrap Template">
+        </div>
+      </div>
+    </div>
+  </section-->
+  <section class="probootstrap-cta">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="probootstrap-animate" data-animate-effect="fadeInRight">PadPlus 2 用科技赋能教育</h2>
+          <a href="download.html" role="button" class="btn btn-primary btn-lg btn-ghost probootstrap-animate" data-animate-effect="fadeInLeft">立即下载</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="probootstrap-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10">
+          <div class="row">
+            <div class="col-md-6 probootstrap-animate">
+              <div class="probootstrap-footer-widget">
+                <h3>开源项目 by @cotzhang</h3>
+                <ul>
+                  <li><a href="https://github.com/cotzhang/app.Cot-Myipad-Plus">Cot-Myipad-Plus</a></li>
+                  <li><a href="https://github.com/cotzhang/app.Cot-Myipad-Plus-Web">Cot-Myipad-Plus-Web</a></li>
+                  <li><a href="https://github.com/cotzhang/app.Cot-Desktop-Application-Framework">Cot-Desktop-Application-Framework</a></li>
+                  <li><a href="https://github.com/cotzhang/app.Cot-Hypernet2">Cot-Hypernet2</a></li>
+                  <li><a href="https://github.com/cotzhang/app.Cot-Online-Wallpaper">Cot-Online-Wallpaper</a></li>
+                </ul>
+              </div>
+            </div>
+        <div class="col-md-6 probootstrap-animate">
+          <div class="probootstrap-footer-widget">
+            <h3>声明</h3>
+            <p>继续使用本软件及其服务，<br>表明您同意仅使用该软件进行学习相关用途。</p>
+            <p>禁止使用本软件进行破坏教学系统等违反规章制度的行为。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Modal login -->
+  <div class="modal fadeInUp probootstrap-animated" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="vertical-alignment-helper">
+      <div class="modal-dialog modal-md vertical-align-center">
+        <div class="modal-content">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icon-cross"></i></button>
+          <div class="probootstrap-modal-flex">
+            <div class="probootstrap-modal-figure" style="background-image: url(img/modal_bg.jpg);"></div>
+            <div class="probootstrap-modal-content">
+              <form action="#" class="probootstrap-form">
+                <h1 class="mb30">少年派网页版登录</h1>
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="请输入平板服务器地址" id="servertxt">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="请输入平板6位数账号" id="padaccount">
+                </div>
+                <div class="form-group clearfix">
+                  <!--label for="remember" class="probootstrap-remember"><input type="checkbox" id="remember"> 记住用户</label-->
+                  <a href="#" class="probootstrap-forgot" onclick="window.open('https://cotzhang.cn/myipadweb')">打开新窗口</a>
+                </div>
+                <div class="form-group text-left">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <input type="submit" class="btn btn-primary btn-block" value="登录" onclick="login()">
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END modal login -->
+  <script src="js/scripts.min.js"></script>
+  <script src="js/custom.min.js"></script>
+  <script>
+    function login() {
+      let server = document.getElementById("servertxt").value;
+      let account = document.getElementById("padaccount").value;
+      window.open("https://cotzhang.cn/myipadweb#"+server+","+account); 
+    }
+    window.onload = function() {
+      console.log("onload")
+      let arr = document.querySelectorAll(".laterputimgs");
+      for (var i = 1; i <= arr.length; i++) {
+        arr[i-1].src = "img/img_showcase_"+(i+1)+".jpg";
+      }
+    }
+  </script>
+</body>
+
+</html>
