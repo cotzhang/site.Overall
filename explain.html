@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C语言乘方算法优化</title>
+    <style>
+        :root {
+            --bg-color: #1e1e2e;
+            --text-color: #e0e0e0;
+            --primary-color: #bb86fc;
+            --secondary-color: #03dac6;
+            --highlight-color: #ff7597;
+            --code-bg: #2d2d44;
+            --border-color: #3e3e5e;
+            --step-highlight: rgba(187, 134, 252, 0.2);
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h1, h2, h3 {
+            color: var(--primary-color);
+        }
+        
+        .container {
+            background-color: var(--code-bg);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        
+        .code-container {
+            position: relative;
+            background-color: #1e1e1e;
+            border-radius: 6px;
+            padding: 15px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 15px 0;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .code-line {
+            padding: 2px 5px;
+            margin: 2px 0;
+            transition: background-color 0.3s;
+        }
+        
+        .current-step {
+            background-color: var(--step-highlight);
+            border-radius: 4px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { background-color: var(--step-highlight); }
+            50% { background-color: rgba(187, 134, 252, 0.4); }
+            100% { background-color: var(--step-highlight); }
+        }
+        
+        .explanation {
+            background-color: var(--bg-color);
+            border-left: 4px solid var(--secondary-color);
+            padding: 10px 15px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .variable-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background-color: var(--code-bg);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .variable-table th, .variable-table td {
+            padding: 8px 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .variable-table th {
+            background-color: var(--primary-color);
+            color: #1e1e1e;
+        }
+        
+        .variable-table tr:hover {
+            background-color: rgba(187, 134, 252, 0.1);
+        }
+        
+        .animation-area {
+            height: 200px;
+            background-color: var(--code-bg);
+            border-radius: 6px;
+            margin: 15px 0;
+            padding: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .value-box {
+            position: absolute;
+            background-color: var(--secondary-color);
+            color: #1e1e1e;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: all 0.5s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn {
+            background-color: var(--primary-color);
+            color: #1e1e1e;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-right: 10px;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #a370d3;
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #03b8a5;
+        }
+        
+        .progress-container {
+            width: 100%;
+            background-color: var(--border-color);
+            border-radius: 4px;
+            margin: 15px 0;
+            height: 8px;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background-color: var(--highlight-color);
+            border-radius: 4px;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        .tab {
+            display: none;
+        }
+        
+        .tab.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .tab-buttons {
+            display: flex;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .tab-btn {
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .tab-btn.active {
+            color: var(--primary-color);
+        }
+        
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <h1>C语言乘方运算教学</h1>
+    
+    <div class="tab-buttons">
+        <button class="tab-btn active" onclick="openTab('tab1')">初始代码</button>
+        <button class="tab-btn" onclick="openTab('tab2')">实现power函数</button>
+        <button class="tab-btn" onclick="openTab('tab3')">使用循环简化</button>
+        <button class="tab-btn" onclick="openTab('tab4')">最终优化</button>
+    </div>
+    
+    <div id="tab1" class="tab active">
+        <div class="container">
+            <h2>初始代码的问题</h2>
+            <p>我们从一个简单的C语言程序开始，它试图打印2的1到10次方：</p>
+            
+            <div class="explanation">
+                <h3>问题分析</h3>
+                <p>这段代码有一个严重的问题：在C语言中，<code>^</code>运算符并不是乘方运算，而是按位异或(XOR)运算。</p>
+                <p>初学者常常会犯这个错误，因为数学中常用<code>a^b</code>表示a的b次方，但在C语言中这是错误的。</p>
+                <p>我们需要自己实现一个乘方运算的函数。</p>
+            </div>
+            
+            <div class="code-container">
+                <div class="code-line">#include&nbsp;&lt;stdio.h&gt;</div>
+                <div class="code-line">int&nbsp;main(){</div>
+                <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;z=2;</div>
+                <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;printf("%d,%d,%d,%d,%d,%d,%d,%d,%d,%d",z,z^2,z^3,z^4,z^5,z^6,z^7,z^8,z^9,z^10);</div>
+                <div class="code-line">}</div>
+            </div>
+            
+            <button class="btn" onclick="nextTab()">下一步：实现power函数</button>
+        </div>
+    </div>
+    
+    <div id="tab2" class="tab">
+        <div class="container">
+            <h2>实现power函数</h2>
+            <p>我们需要自己实现一个乘方运算的函数，这里我们创建一个<code>power()</code>函数：</p>
+            
+            <div class="explanation">
+                <h3>函数解析</h3>
+                <p>这个函数接受两个参数：<code>base</code>(底数)和<code>time</code>(指数)。</p>
+                <p>它通过循环将base乘以自身time次来计算乘方结果。</p>
+                <p>例如，计算2^3就是2×2×2=8。</p>
+            </div>
+            
+            <div class="code-container" id="power-code">
+                <div class="code-line">int&nbsp;power(int&nbsp;base,&nbsp;int&nbsp;time)&nbsp;{&nbsp;<span class="comment">//&nbsp;基础的乘方算法</span></div>
+                <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;total&nbsp;=&nbsp;1;&nbsp;<span class="comment">//&nbsp;定义一个结果，初始为1</span></div>
+                <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;i&nbsp;=&nbsp;0;</div>
+                <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;for(i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;time;&nbsp;i++)&nbsp;{&nbsp;<span class="comment">//&nbsp;循环time次</span></div>
+                <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;total&nbsp;*=&nbsp;base;&nbsp;<span class="comment">//&nbsp;给结果乘上base</span></div>
+                <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+                <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;total;</div>
+                <div class="code-line">}</div>
+            </div>
+            
+            <div class="animation-area" id="power-animation">
+                <h3>动画演示：计算2^3的过程</h3>
+                <div class="progress-container">
+                    <div class="progress-bar" id="power-progress"></div>
+                </div>
+                <div id="power-values"></div>
+            </div>
+            
+            <button class="btn" onclick="startPowerAnimation()">播放动画</button>
+            <button class="btn btn-secondary" onclick="nextTab()">下一步：应用power函数</button>
+        </div>
+    </div>
+    
+    <div id="tab3" class="tab">
+        <div class="container">
+            <h2>应用power函数</h2>
+            <p>现在我们可以用<code>power()</code>函数替换原来的代码：</p>
+            
+            <div class="code-container">
+                <div class="code-line">#include&nbsp;&lt;stdio.h&gt;</div>
+                <div class="code-line">int&nbsp;power(int&nbsp;base,&nbsp;int&nbsp;time)&nbsp;{&nbsp;<span class="comment">//&nbsp;基础的乘方算法</span></div>
+                <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;total&nbsp;=&nbsp;1;&nbsp;<span class="comment">//&nbsp;定义一个结果，初始为1</span></div>
+                <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;i&nbsp;=&nbsp;0;</div>
+                <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;for(i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;time;&nbsp;i++)&nbsp;{&nbsp;<span class="comment">//&nbsp;循环time次</span></div>
+                <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;total&nbsp;*=&nbsp;base;&nbsp;<span class="comment">//&nbsp;给结果乘上base</span></div>
+                <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+                <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;total;</div>
+                <div class="code-line">}</div>
+                <div class="code-line">int&nbsp;main()&nbsp;{</div>
+                <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;z&nbsp;=&nbsp;2;</div>
+                <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;printf("%d,%d,%d,%d,%d,%d,%d,%d,%d,%d",</div>
+                <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;power(z,1),&nbsp;power(z,2),&nbsp;power(z,3),&nbsp;power(z,4),&nbsp;power(z,5),</div>
+                <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;power(z,6),&nbsp;power(z,7),&nbsp;power(z,8),&nbsp;power(z,9),&nbsp;power(z,10));</div>
+                <div class="code-line">}</div>
+            </div>
+            
+            <div class="explanation">
+                <h3>代码改进</h3>
+                <p>虽然这段代码现在可以正确工作，但它有几个问题：</p>
+                <ol>
+                    <li><code>printf()</code>语句太长，不易阅读</li>
+                    <li>重复调用<code>power()</code>函数，效率不高</li>
+                    <li>硬编码了10个输出，不够灵活</li>
+                </ol>
+                <p>我们可以使用循环来进一步优化这段代码。</p>
+            </div>
+            
+            <button class="btn" onclick="nextTab()">下一步：使用循环简化</button>
+        </div>
+    </div>
+    
+    <div id="tab4" class="tab">
+        <div class="container">
+            <h2>最终优化</h2>
+            <p>我们可以将乘方的循环和输出的循环合并在一起，使代码更简洁高效：</p>
+            
+            <div class="explanation">
+                <h3>优化解析</h3>
+                <p>这个最终版本有以下优点：</p>
+                <ol>
+                    <li>不需要单独的<code>power()</code>函数，减少了函数调用开销</li>
+                    <li>使用循环自动计算和输出，代码更简洁</li>
+                    <li>易于修改输出的范围（只需改变循环条件）</li>
+                    <li>更高效，因为每次迭代只需一次乘法运算</li>
+                </ol>
+                <p>这个版本是计算和输出2的幂的最佳方式。</p>
+            </div>
+            
+            <div class="code-container" id="final-code">
+                <div class="code-line">#include&nbsp;&lt;stdio.h&gt;</div>
+                <div class="code-line">int&nbsp;main()&nbsp;{</div>
+                <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;z&nbsp;=&nbsp;2;</div>
+                <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;base&nbsp;=&nbsp;z;</div>
+                <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;i;</div>
+                <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;printf("%d",&nbsp;z);</div>
+                <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;for(i&nbsp;=&nbsp;2;&nbsp;i&nbsp;&lt;=&nbsp;10;&nbsp;i++)&nbsp;{</div>
+                <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;base&nbsp;=&nbsp;base&nbsp;*&nbsp;z;</div>
+                <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(",%d",&nbsp;base);</div>
+                <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+                <div class="code-line">}</div>
+            </div>
+            
+            <div class="animation-area" id="final-animation">
+                <h3>动画演示：最终代码执行过程</h3>
+                <div class="progress-container">
+                    <div class="progress-bar" id="final-progress"></div>
+                </div>
+                <div id="final-values"></div>
+                <div id="final-output" style="margin-top: 20px; font-family: monospace; font-size: 16px;"></div>
+            </div>
+            
+            <button class="btn" onclick="startFinalAnimation()">播放动画</button>
+            <button class="btn btn-secondary" onclick="resetTabs()">重新开始</button>
+        </div>
+    </div>
+    
+    <script>
+        let currentTab = 'tab1';
+        
+        function openTab(tabId) {
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.getElementById(tabId).classList.add('active');
+            document.querySelector(`.tab-btn[onclick="openTab('${tabId}')"]`).classList.add('active');
+            currentTab = tabId;
+        }
+        
+        function nextTab() {
+            const tabs = ['tab1', 'tab2', 'tab3', 'tab4'];
+            const currentIndex = tabs.indexOf(currentTab);
+            if (currentIndex < tabs.length - 1) {
+                openTab(tabs[currentIndex + 1]);
+            }
+        }
+        
+        function resetTabs() {
+            openTab('tab1');
+        }
+        
+        function startPowerAnimation() {
+            const steps = [
+                { line: 1, desc: "开始power函数，base=2, time=3" },
+                { line: 2, desc: "初始化total=1" },
+                { line: 3, desc: "初始化i=0" },
+                { line: 4, desc: "第一次循环：i=0 < 3，进入循环" },
+                { line: 5, desc: "total = 1 * 2 = 2" },
+                { line: 4, desc: "第二次循环：i=1 < 3，进入循环" },
+                { line: 5, desc: "total = 2 * 2 = 4" },
+                { line: 4, desc: "第三次循环：i=2 < 3，进入循环" },
+                { line: 5, desc: "total = 4 * 2 = 8" },
+                { line: 4, desc: "第四次循环：i=3 不小于 3，退出循环" },
+                { line: 6, desc: "返回结果 total=8" }
+            ];
+            
+            const codeLines = document.querySelectorAll('#power-code .code-line');
+            const animationArea = document.getElementById('power-values');
+            const progressBar = document.getElementById('power-progress');
+            
+            animationArea.innerHTML = '';
+            progressBar.style.width = '0%';
+            
+            // 清除之前的高亮
+            codeLines.forEach(line => line.classList.remove('current-step'));
+            
+            let currentStep = 0;
+            
+            function animateStep() {
+                if (currentStep >= steps.length) return;
+                
+                // 更新高亮行
+                codeLines.forEach(line => line.classList.remove('current-step'));
+                codeLines[steps[currentStep].line].classList.add('current-step');
+                
+                // 更新进度条
+                progressBar.style.width = `${(currentStep + 1) / steps.length * 100}%`;
+                
+                // 更新变量显示
+                let total = 1;
+                let i = 0;
+                let base = 2;
+                
+                if (currentStep >= 2) i = 0;
+                if (currentStep >= 4) i = 1;
+                if (currentStep >= 6) i = 2;
+                if (currentStep >= 8) i = 3;
+                
+                if (currentStep >= 4) total = 2;
+                if (currentStep >= 6) total = 4;
+                if (currentStep >= 8) total = 8;
+                
+                animationArea.innerHTML = `
+                    <div style="display: flex; justify-content: space-around; margin-top: 20px;">
+                        <div class="value-box" style="bottom: 50px; left: 20px;">base = ${base}</div>
+                        <div class="value-box" style="bottom: 50px; left: 150px;">time = 3</div>
+                        <div class="value-box" style="bottom: 50px; left: 280px;">total = ${total}</div>
+                        <div class="value-box" style="bottom: 50px; left: 410px;">i = ${i}</div>
+                    </div>
+                    <div style="margin-top: 80px; padding: 10px; background-color: rgba(3, 218, 198, 0.1); border-radius: 4px;">
+                        <strong>说明：</strong>${steps[currentStep].desc}
+                    </div>
+                `;
+                
+                currentStep++;
+                setTimeout(animateStep, 1500);
+            }
+            
+            animateStep();
+        }
+        
+        function startFinalAnimation() {
+            const steps = [
+                { line: 1, desc: "包含标准输入输出头文件" },
+                { line: 2, desc: "开始main函数" },
+                { line: 3, desc: "初始化变量 z = 2" },
+                { line: 4, desc: "初始化变量 base = z (2)" },
+                { line: 5, desc: "声明循环变量 i" },
+                { line: 6, desc: "输出第一个值 z (2)" },
+                { line: 7, desc: "开始循环，i=2" },
+                { line: 8, desc: "计算 base = base * z = 2 * 2 = 4" },
+                { line: 9, desc: "输出 ,4" },
+                { line: 7, desc: "继续循环，i=3" },
+                { line: 8, desc: "计算 base = base * z = 4 * 2 = 8" },
+                { line: 9, desc: "输出 ,8" },
+                { line: 7, desc: "继续循环，i=4" },
+                { line: 8, desc: "计算 base = base * z = 8 * 2 = 16" },
+                { line: 9, desc: "输出 ,16" },
+                { line: 7, desc: "继续循环，i=5" },
+                { line: 8, desc: "计算 base = base * z = 16 * 2 = 32" },
+                { line: 9, desc: "输出 ,32" },
+                { line: 7, desc: "继续循环，i=6" },
+                { line: 8, desc: "计算 base = base * z = 32 * 2 = 64" },
+                { line: 9, desc: "输出 ,64" },
+                { line: 7, desc: "继续循环，i=7" },
+                { line: 8, desc: "计算 base = base * z = 64 * 2 = 128" },
+                { line: 9, desc: "输出 ,128" },
+                { line: 7, desc: "继续循环，i=8" },
+                { line: 8, desc: "计算 base = base * z = 128 * 2 = 256" },
+                { line: 9, desc: "输出 ,256" },
+                { line: 7, desc: "继续循环，i=9" },
+                { line: 8, desc: "计算 base = base * z = 256 * 2 = 512" },
+                { line: 9, desc: "输出 ,512" },
+                { line: 7, desc: "继续循环，i=10" },
+                { line: 8, desc: "计算 base = base * z = 512 * 2 = 1024" },
+                { line: 9, desc: "输出 ,1024" },
+                { line: 7, desc: "循环结束，i=11 > 10" }
+            ];
+            
+            const codeLines = document.querySelectorAll('#final-code .code-line');
+            const animationArea = document.getElementById('final-values');
+            const outputArea = document.getElementById('final-output');
+            const progressBar = document.getElementById('final-progress');
+            
+            animationArea.innerHTML = '';
+            outputArea.innerHTML = '输出: ';
+            progressBar.style.width = '0%';
+            
+            // 清除之前的高亮
+            codeLines.forEach(line => line.classList.remove('current-step'));
+            
+            let currentStep = 0;
+            let output = '2';
+            
+            function animateStep() {
+                if (currentStep >= steps.length) return;
+                
+                // 更新高亮行
+                codeLines.forEach(line => line.classList.remove('current-step'));
+                
+                // 根据步骤确定高亮哪一行
+                const lineToHighlight = Math.min(steps[currentStep].line, codeLines.length - 1);
+                codeLines[lineToHighlight].classList.add('current-step');
+                
+                // 更新进度条
+                progressBar.style.width = `${(currentStep + 1) / steps.length * 100}%`;
+                
+                // 更新变量和输出
+                let z = 2;
+                let base = 2;
+                let i = 0;
+                
+                if (currentStep >= 3) base = 2;
+                if (currentStep >= 5) output = '2';
+                if (currentStep >= 6) i = 2;
+                if (currentStep >= 7) base = 4;
+                if (currentStep >= 8) output = '2,4';
+                if (currentStep >= 9) i = 3;
+                if (currentStep >= 10) base = 8;
+                if (currentStep >= 11) output = '2,4,8';
+                if (currentStep >= 12) i = 4;
+                if (currentStep >= 13) base = 16;
+                if (currentStep >= 14) output = '2,4,8,16';
+                if (currentStep >= 15) i = 5;
+                if (currentStep >= 16) base = 32;
+                if (currentStep >= 17) output = '2,4,8,16,32';
+                if (currentStep >= 18) i = 6;
+                if (currentStep >= 19) base = 64;
+                if (currentStep >= 20) output = '2,4,8,16,32,64';
+                if (currentStep >= 21) i = 7;
+                if (currentStep >= 22) base = 128;
+                if (currentStep >= 23) output = '2,4,8,16,32,64,128';
+                if (currentStep >= 24) i = 8;
+                if (currentStep >= 25) base = 256;
+                if (currentStep >= 26) output = '2,4,8,16,32,64,128,256';
+                if (currentStep >= 27) i = 9;
+                if (currentStep >= 28) base = 512;
+                if (currentStep >= 29) output = '2,4,8,16,32,64,128,256,512';
+                if (currentStep >= 30) i = 10;
+                if (currentStep >= 31) base = 1024;
+                if (currentStep >= 32) output = '2,4,8,16,32,64,128,256,512,1024';
+                
+                animationArea.innerHTML = `
+                    <div style="display: flex; justify-content: space-around; margin-top: 20px;">
+                        <div class="value-box" style="bottom: 50px; left: 20px;">z = ${z}</div>
+                        <div class="value-box" style="bottom: 50px; left: 150px;">base = ${base}</div>
+                        <div class="value-box" style="bottom: 50px; left: 280px;">i = ${i}</div>
+                    </div>
+                    <div style="margin-top: 80px; padding: 10px; background-color: rgba(3, 218, 198, 0.1); border-radius: 4px;">
+                        <strong>说明：</strong>${steps[currentStep].desc}
+                    </div>
+                `;
+                
+                outputArea.innerHTML = `输出: ${output}`;
+                
+                currentStep++;
+                setTimeout(animateStep, 1000);
+            }
+            
+            animateStep();
+        }
+    </script>
+</body>
+</html>
