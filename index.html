@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CotZhang</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <style>
         :root {
             --primary-color: #4361ee;
@@ -16,6 +17,26 @@
             --success-color: #4caf50;
             --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
+            
+            --deep-space: #0a0e1a;
+            --surface-1: #131827;
+            --surface-2: #1a2035;
+            --surface-3: #222840;
+            --monitor-primary: #3B82F6;
+            --monitor-accent: #8B5CF6;
+            --monitor-text-primary: #F1F5F9;
+            --monitor-text-secondary: #94A3B8;
+            --monitor-text-muted: #64748B;
+            --radius-pill: 100px;
+            --radius-card: 20px;
+            
+            --papergen-primary: #1B6B4D;
+            --papergen-surface: #F8FAF7;
+            --papergen-container: #FFFFFF;
+            --papergen-text: #1C1B1F;
+            --papergen-text-secondary: #49454F;
+            --papergen-radius: 24px;
+            --papergen-outline: #74777F;
         }
 
         * {
@@ -34,51 +55,363 @@
             flex-direction: column;
         }
 
-        header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
+        .navbar {
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-            z-index: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
         }
 
-        .header-content {
-            position: relative;
-            z-index: 1;
+        .navbar.scrolled {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .navbar-content {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
         }
 
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+        .navbar-brand {
+            font-size: 1.5rem;
             font-weight: 700;
+            color: var(--dark-color);
+            text-decoration: none;
         }
 
-        .subtitle {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            max-width: 700px;
-            margin: 0 auto;
+        .navbar-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .navbar-links a {
+            text-decoration: none;
+            color: var(--gray-color);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .navbar-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .navbar-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-links a:hover::after {
+            transform: scaleX(1);
+        }
+
+        .navbar-contact {
+            font-size: 0.85rem;
+            color: var(--gray-color);
         }
 
         main {
             flex: 1;
-            padding: 2rem 0;
+            padding-top: 64px;
+        }
+
+        .hero-dual {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: calc(100vh - 64px);
+        }
+
+        .monitor-section {
+            background: var(--deep-space);
+            color: var(--monitor-text-primary);
+            padding: 4rem 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .monitor-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse at 70% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 60%),
+                linear-gradient(180deg, rgba(139, 92, 246, 0.1) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .monitor-section::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+            -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+            pointer-events: none;
+        }
+
+        .monitor-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .monitor-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem;
+            background: rgba(59, 130, 246, 0.15);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: var(--radius-pill);
+            font-size: 0.85rem;
+            color: var(--monitor-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .monitor-title {
+            font-size: 2.8rem;
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -0.04em;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #F1F5F9 0%, var(--monitor-primary) 50%, var(--monitor-accent) 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .monitor-desc {
+            font-size: 1.1rem;
+            color: var(--monitor-text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .monitor-features {
+            list-style: none;
+            margin-bottom: 2.5rem;
+        }
+
+        .monitor-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.6rem 0;
+            color: var(--monitor-text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .monitor-features li::before {
+            content: '';
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            background: linear-gradient(135deg, var(--monitor-primary), var(--monitor-accent));
+            border-radius: 50%;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .monitor-features li::after {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: var(--deep-space);
+            clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 38% 0%);
+        }
+
+        .monitor-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-monitor-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.9rem 2rem;
+            background: linear-gradient(135deg, var(--monitor-primary), var(--monitor-accent));
+            color: white;
+            border-radius: var(--radius-pill);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            box-shadow: 0 8px 30px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-monitor-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(59, 130, 246, 0.5);
+        }
+
+        .btn-monitor-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.9rem 2rem;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--monitor-text-primary);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: var(--radius-pill);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .btn-monitor-secondary:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .papergen-section {
+            background: var(--papergen-surface);
+            color: var(--papergen-text);
+            padding: 4rem 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .papergen-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem;
+            background: rgba(27, 107, 77, 0.08);
+            border: 1px solid rgba(27, 107, 77, 0.2);
+            border-radius: var(--radius-pill);
+            font-size: 0.85rem;
+            color: var(--papergen-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .papergen-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--papergen-primary);
+            margin-bottom: 1rem;
+        }
+
+        .papergen-desc {
+            font-size: 1.05rem;
+            color: var(--papergen-text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .papergen-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .papergen-card {
+            background: var(--papergen-container);
+            border-radius: var(--papergen-radius);
+            padding: 1.2rem;
+            border: 1px solid var(--papergen-outline);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .papergen-card-icon {
+            font-family: 'Material Symbols Outlined';
+            font-size: 1.5rem;
+            color: var(--papergen-primary);
+        }
+
+        .papergen-card-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--papergen-text);
+        }
+
+        .papergen-card-desc {
+            font-size: 0.8rem;
+            color: var(--papergen-text-secondary);
+            line-height: 1.5;
+        }
+
+        .papergen-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-papergen-filled {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.8rem;
+            background: var(--papergen-primary);
+            color: white;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+        }
+
+        .btn-papergen-filled:hover {
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-papergen-outlined {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.8rem;
+            background: transparent;
+            color: var(--papergen-primary);
+            border: 1px solid var(--papergen-outline);
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .btn-papergen-outlined:hover {
+            background: rgba(27, 107, 77, 0.08);
+        }
+
+        .other-projects {
+            padding: 4rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
             width: 100%;
@@ -325,18 +658,42 @@
         }
 
         @media (max-width: 768px) {
+            .navbar-links {
+                display: none;
+            }
+
+            .hero-dual {
+                grid-template-columns: 1fr;
+            }
+
+            .monitor-section, .papergen-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .monitor-title {
+                font-size: 2rem;
+            }
+
+            .papergen-title {
+                font-size: 2rem;
+            }
+
+            .papergen-cards {
+                grid-template-columns: 1fr;
+            }
+
             h1 {
                 font-size: 2rem;
             }
-            
+
             .subtitle {
                 font-size: 1rem;
             }
-            
+
             .cards-container {
                 grid-template-columns: 1fr;
             }
-            
+
             .section-title h2 {
                 font-size: 1.5rem;
             }
@@ -344,177 +701,256 @@
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <h1>CotZhang 项目中心</h1>
-            <p class="subtitle">探索轻量化技术解决方案</p>
+    <nav class="navbar" id="navbar">
+        <div class="navbar-content">
+            <a href="#" class="navbar-brand">CotZhang</a>
+            <ul class="navbar-links">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#monitor">Monitor</a></li>
+                <li><a href="#papergen">PaperGen</a></li>
+                <li><a href="#other-projects">其他项目</a></li>
+            </ul>
+            <span class="navbar-contact">cot@cotzhang.cn</span>
         </div>
-    </header>
+    </nav>
 
     <main>
-
-
-        <div class="cards-container">
-            <!-- Hypernet -->
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Hypernet</h3>
-                    <p class="card-subtitle">与安卓手机共享高速网络连接</p>
-                </div>
-                <div class="card-body">
-                    <p class="card-description">一个高效的工具，让您的安卓设备能够轻松共享网络连接，提供更快的传输速度和更稳定的连接体验。</p>
-                </div>
-                <div class="card-footer">
-                    <a href="https://github.com/cotzhang/app.Cot-Hypernet2/releases" class="btn btn-primary">
-                        <i class="fas fa-download btn-icon"></i>立即下载
-                    </a>
-                    <a href="https://github.com/cotzhang/app.Cot-Hypernet2" class="btn btn-secondary">
-                        <i class="fab fa-github btn-icon"></i>项目地址
-                    </a>
-                </div>
-            </div>
-
-            <!-- PadPlus 2 -->
-            <div class="card" style="display: none;">
-                <div class="card-header">
-                    <h3 class="card-title">PadPlus 2 <span class="badge badge-warning">已终止维护</span></h3>
-                    <p class="card-subtitle">用科技赋能教育</p>
-                </div>
-                <div class="card-body">
-                    <p class="card-description">睿易少年派平板桌面客户端，支持导出课件、题目作答、错题本查看导出、文件上传、观看课堂实录、在线答疑等功能，帮助学生利用平板更高效率学习。</p>
-                </div>
-                <div class="card-footer">
-                    <a href="https://cotzhang.cn/padplus2.html" class="btn btn-primary">
-                        <i class="fas fa-info-circle btn-icon"></i>查看详情
-                    </a>
-                    <a href="https://github.com/cotzhang/app.Cot-Myipad-Plus" class="btn btn-secondary">
-                        <i class="fab fa-github btn-icon"></i>PadPlus项目
-                    </a>
-                    <a href="https://github.com/cotzhang/Cot-Myipad-Plus-2" class="btn btn-secondary">
-                        <i class="fab fa-github btn-icon"></i>PadPlus2代码
-                    </a>
+        <section class="hero-dual" id="home">
+            <div class="monitor-section" id="monitor">
+                <div class="monitor-content">
+                    <div class="monitor-badge">
+                        <i class="fas fa-shield-alt"></i>
+                        智能设备管理
+                    </div>
+                    <h2 class="monitor-title">Monitor</h2>
+                    <p class="monitor-desc">轻量级设备监控与管理系统，实时掌控手机使用状态。远程管理、应用拦截、使用统计，让设备管理更智能、更高效。</p>
+                    <ul class="monitor-features">
+                        <li>设备远程监控与实时状态查看</li>
+                        <li>应用使用统计与时长追踪</li>
+                        <li>智能应用拦截与白名单管理</li>
+                        <li>活动记录与每日使用摘要</li>
+                        <li>RESTful API 与 MCP 集成支持</li>
+                    </ul>
+                    <div class="monitor-buttons">
+                        <a href="https://monitor.cotzhang.cn" class="btn-monitor-primary" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-globe"></i>访问官网
+                        </a>
+                        <a href="https://github.com/cotzhang/Monitor" class="btn-monitor-secondary" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i>GitHub
+                        </a>
+                        <a href="https://github.com/cotzhang/Monitor/releases" class="btn-monitor-secondary" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-download"></i>下载
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            <!-- 中国象棋 -->
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">中国象棋在线联机对战</h3>
-                    <p class="card-subtitle">局域网象棋对弈服务器程序</p>
+            <div class="papergen-section" id="papergen">
+                <div class="papergen-badge">
+                    <span class="material-symbols-outlined" style="font-size: 1rem;">auto_awesome</span>
+                    AI 学术工具
                 </div>
-                <div class="card-body">
-                    <p class="card-description">实现局域网中国象棋对弈的服务器，支持多房间同时游戏</p>
+                <h2 class="papergen-title">PaperGen</h2>
+                <p class="papergen-desc">AI 驱动的学术论文生成与排版工具，支持一键生成、模板套用、格式校验。让学术写作更高效、更规范。</p>
+                
+                <div class="papergen-cards">
+                    <div class="papergen-card">
+                        <span class="material-symbols-outlined papergen-card-icon">article</span>
+                        <div class="papergen-card-title">智能生成</div>
+                        <div class="papergen-card-desc">基于 AI 模型自动生成符合学术规范的论文内容</div>
+                    </div>
+                    <div class="papergen-card">
+                        <span class="material-symbols-outlined papergen-card-icon">description</span>
+                        <div class="papergen-card-title">模板套用</div>
+                        <div class="papergen-card-desc">内置多种学术模板，一键套用格式要求</div>
+                    </div>
+                    <div class="papergen-card">
+                        <span class="material-symbols-outlined papergen-card-icon">spellcheck</span>
+                        <div class="papergen-card-title">格式校验</div>
+                        <div class="papergen-card-desc">自动检测并修正格式偏差，确保规范一致</div>
+                    </div>
+                    <div class="papergen-card">
+                        <span class="material-symbols-outlined papergen-card-icon">download</span>
+                        <div class="papergen-card-title">多格式导出</div>
+                        <div class="papergen-card-desc">支持 PDF、DOCX 等多种格式一键导出</div>
+                    </div>
                 </div>
-                <div class="card-footer">
-                    <a href="https://github.com/cotzhang/app.Cot-Multiplayer-Chinese-Chess" class="btn btn-primary">
-                        <i class="fab fa-github btn-icon"></i>项目地址
+
+                <div class="papergen-buttons">
+                    <a href="https://papergen.cotzhang.cn" class="btn-papergen-filled" target="_blank" rel="noopener noreferrer">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;">open_in_new</span>访问官网
                     </a>
-                </div>
-            </div>
-
-            <!-- PadMultiple -->
-            <div class="card" style="display: none;">
-                <div class="card-header">
-                    <h3 class="card-title">PadMultiple 桌面窗口管理器 <span class="badge badge-info">开发中</span></h3>
-                    <p class="card-subtitle">触屏友好的桌面窗口管理器</p>
-                </div>
-                <div class="card-body">
-                    <p class="card-description">基于Web的，具有高度可拓展性、美观和可自定义的桌面窗口系统，支持引用应用商店并自定义web应用列表、更换壁纸等功能。</p>
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-disabled">
-                        <i class="fas fa-hourglass-half btn-icon"></i>敬请期待
-                    </button>
-                </div>
-            </div>
-
-            <!-- RTSP动态检测 -->
-            <div class="card" style="display: none;">
-                <div class="card-header">
-                    <h3 class="card-title">RTSP动态检测 <span class="badge badge-info">开发中</span></h3>
-                    <p class="card-subtitle">智能视频流解决方案</p>
-                </div>
-                <div class="card-body">
-                    <p class="card-description">对RTSP视频流进行实时区域动态检测，并提供js接口进行web界面的报警引用</p>
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-disabled">
-                        <i class="fas fa-hourglass-half btn-icon"></i>敬请期待
-                    </button>
-                </div>
-            </div>
-
-            <!-- Online Wallpaper -->
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Online Wallpaper</h3>
-                    <p class="card-subtitle">美化您的Windows桌面</p>
-                </div>
-                <div class="card-body">
-                    <p class="card-description">为Windows10自动更换精美壁纸，每日更新高质量背景图片，让您的桌面始终保持新鲜感。</p>
-                </div>
-                <div class="card-footer">
-                    <a href="https://github.com/cotzhang/app.Cot-Online-Wallpaper/releases" class="btn btn-primary">
-                        <i class="fas fa-download btn-icon"></i>立即下载
-                    </a>
-                    <a href="https://github.com/cotzhang/app.Cot-Online-Wallpaper" class="btn btn-secondary">
-                        <i class="fab fa-github btn-icon"></i>项目地址
+                    <a href="https://github.com/cotzhang/PaperGen" class="btn-papergen-outlined" target="_blank" rel="noopener noreferrer">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;">code</span>GitHub
                     </a>
                 </div>
             </div>
+        </section>
 
-            <!-- NodeJS Proxy -->
-            <div class="card" style="display: none;">
-                <div class="card-header">
-                    <h3 class="card-title">NodeJS Proxy <span class="badge badge-info">开发中</span></h3>
-                    <p class="card-subtitle">高效网页访问解决方案</p>
+        <section class="other-projects" id="other-projects">
+            <div class="section-title">
+                <h2>更多项目</h2>
+            </div>
+
+            <div class="cards-container">
+                <!-- Hypernet -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Hypernet</h3>
+                        <p class="card-subtitle">与安卓手机共享高速网络连接</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">一个高效的工具，让您的安卓设备能够轻松共享网络连接，提供更快的传输速度和更稳定的连接体验。</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://github.com/cotzhang/app.Cot-Hypernet2/releases" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-download btn-icon"></i>立即下载
+                        </a>
+                        <a href="https://github.com/cotzhang/app.Cot-Hypernet2" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github btn-icon"></i>项目地址
+                        </a>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <p class="card-description">基于NodeJS开发的通过网址解析替换法实现的正向网页访问代理，实现纯web端无https证书代理访问</p>
+
+                <!-- PadPlus 2 -->
+                <div class="card" style="display: none;">
+                    <div class="card-header">
+                        <h3 class="card-title">PadPlus 2 <span class="badge badge-warning">已终止维护</span></h3>
+                        <p class="card-subtitle">用科技赋能教育</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">睿易少年派平板桌面客户端，支持导出课件、题目作答、错题本查看导出、文件上传、观看课堂实录、在线答疑等功能，帮助学生利用平板更高效率学习。</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://cotzhang.cn/padplus2.html" class="btn btn-primary">
+                            <i class="fas fa-info-circle btn-icon"></i>查看详情
+                        </a>
+                        <a href="https://github.com/cotzhang/app.Cot-Myipad-Plus" class="btn btn-secondary">
+                            <i class="fab fa-github btn-icon"></i>PadPlus项目
+                        </a>
+                        <a href="https://github.com/cotzhang/Cot-Myipad-Plus-2" class="btn btn-secondary">
+                            <i class="fab fa-github btn-icon"></i>PadPlus2代码
+                        </a>
+                    </div>
                 </div>
-                <div class="card-footer">
-                    <button class="btn btn-disabled">
-                        <i class="fas fa-hourglass-half btn-icon"></i>敬请期待
-                    </button>
+
+                <!-- 中国象棋 -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">中国象棋在线联机对战</h3>
+                        <p class="card-subtitle">局域网象棋对弈服务器程序</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">实现局域网中国象棋对弈的服务器，支持多房间同时游戏</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://github.com/cotzhang/app.Cot-Multiplayer-Chinese-Chess" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github btn-icon"></i>项目地址
+                        </a>
+                    </div>
+                </div>
+
+                <!-- PadMultiple -->
+                <div class="card" style="display: none;">
+                    <div class="card-header">
+                        <h3 class="card-title">PadMultiple 桌面窗口管理器 <span class="badge badge-info">开发中</span></h3>
+                        <p class="card-subtitle">触屏友好的桌面窗口管理器</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">基于Web的，具有高度可拓展性、美观和可自定义的桌面窗口系统，支持引用应用商店并自定义web应用列表、更换壁纸等功能。</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-disabled">
+                            <i class="fas fa-hourglass-half btn-icon"></i>敬请期待
+                        </button>
+                    </div>
+                </div>
+
+                <!-- RTSP动态检测 -->
+                <div class="card" style="display: none;">
+                    <div class="card-header">
+                        <h3 class="card-title">RTSP动态检测 <span class="badge badge-info">开发中</span></h3>
+                        <p class="card-subtitle">智能视频流解决方案</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">对RTSP视频流进行实时区域动态检测，并提供js接口进行web界面的报警引用</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-disabled">
+                            <i class="fas fa-hourglass-half btn-icon"></i>敬请期待
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Online Wallpaper -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Online Wallpaper</h3>
+                        <p class="card-subtitle">美化您的Windows桌面</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">为Windows10自动更换精美壁纸，每日更新高质量背景图片，让您的桌面始终保持新鲜感。</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://github.com/cotzhang/app.Cot-Online-Wallpaper/releases" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-download btn-icon"></i>立即下载
+                        </a>
+                        <a href="https://github.com/cotzhang/app.Cot-Online-Wallpaper" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github btn-icon"></i>项目卡片
+                        </a>
+                    </div>
+                </div>
+
+                <!-- NodeJS Proxy -->
+                <div class="card" style="display: none;">
+                    <div class="card-header">
+                        <h3 class="card-title">NodeJS Proxy <span class="badge badge-info">开发中</span></h3>
+                        <p class="card-subtitle">高效网页访问解决方案</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">基于NodeJS开发的通过网址解析替换法实现的正向网页访问代理，实现纯web端无https证书代理访问</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-disabled">
+                            <i class="fas fa-hourglass-half btn-icon"></i>敬请期待
+                        </button>
+                    </div>
+                </div>
+                
+                        
+                <!-- 希悦助手 -->
+                <div class="card" style="display: none;">
+                    <div class="card-header">
+                        <h3 class="card-title">希悦助手<span class="badge badge-info">开发中</span></h3>
+                        <p class="card-subtitle">希悦抢课工具</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">希悦校园客户端完整功能及负延迟自动抢课功能</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-disabled">
+                            <i class="fas fa-hourglass-half btn-icon"></i>敬请期待
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="accordion" style="display: none;">
+                <div class="accordion-header">
+                    <h3 class="accordion-title">小工具</h3>
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </div>
+                <div class="accordion-content">
+                    <div class="tool-card">
+                        <h4 class="tool-title">广州中学奥鸽平板在线答疑登录器</h4>
+                        <a href="https://cotzhang.cn/zxdy" class="btn btn-primary">
+                            <i class="fas fa-external-link-alt btn-icon"></i>打开
+                        </a>
+                    </div>
                 </div>
             </div>
-            
-                    
-                    <!-- 希悦助手 -->
-            <div class="card" style="display: none;">
-                <div class="card-header">
-                    <h3 class="card-title">希悦助手<span class="badge badge-info">开发中</span></h3>
-                    <p class="card-subtitle">希悦抢课工具</p>
-                </div>
-                <div class="card-body">
-                    <p class="card-description">希悦校园客户端完整功能及负延迟自动抢课功能</p>
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-disabled">
-                        <i class="fas fa-hourglass-half btn-icon"></i>敬请期待
-                    </button>
-                </div>
-            </div>
-        
-
-        </div>
-
-
-        <div class="accordion" style="display: none;">
-            <div class="accordion-header">
-                <h3 class="accordion-title">小工具</h3>
-                <i class="fas fa-chevron-down accordion-icon"></i>
-            </div>
-            <div class="accordion-content">
-                <!-- 广州中学奥鸽平板在线答疑登录器 -->
-                <div class="tool-card">
-                    <h4 class="tool-title">广州中学奥鸽平板在线答疑登录器</h4>
-                    <a href="https://cotzhang.cn/zxdy" class="btn btn-primary">
-                        <i class="fas fa-external-link-alt btn-icon"></i>打开
-                    </a>
-                </div>
-            </div>
-        </div>
+        </section>
     </main>
 
     <footer>
@@ -524,7 +960,25 @@
     </footer>
 
     <script>
-        // 手风琴效果
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
         document.querySelectorAll('.accordion-header').forEach(header => {
             header.addEventListener('click', () => {
                 const accordion = header.parentElement;
@@ -532,9 +986,8 @@
             });
         });
 
-        // 为所有外部链接添加 target="_blank"
         document.querySelectorAll('a').forEach(link => {
-            if (link.hostname !== window.location.hostname) {
+            if (link.hostname && link.hostname !== window.location.hostname) {
                 link.setAttribute('target', '_blank');
                 link.setAttribute('rel', 'noopener noreferrer');
             }
