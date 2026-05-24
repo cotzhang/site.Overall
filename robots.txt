@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /padplus2.html
+
+Sitemap: https://cotzhang.cn/sitemap.xml

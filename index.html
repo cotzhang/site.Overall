@@ -3,9 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CotZhang</title>
+    <title>CotZhang - 项目展示</title>
+    <meta name="description" content="CotZhang的主页，Monitor智能设备监控系统、Tempra AI学术写作工具等开源项目。提供设备远程监控、应用管理、学术写作辅助等解决方案。">
+    <meta name="keywords" content="CotZhang, Monitor, Tempra, 设备监控, 学术写作, AI写作, 开源项目, 智能管理, 安卓监控, 论文排版">
+    <meta name="author" content="CotZhang">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="baidu-site-verification" content="">
+    <meta name="sogou_site_verification" content="">
+    <meta name="360-site-verification" content="">
+    <link rel="canonical" href="https://cotzhang.cn/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cotzhang.cn/">
+    <meta property="og:title" content="CotZhang - 个人开发者项目展示">
+    <meta property="og:description" content="CotZhang的个人开发者主页，展示Monitor智能设备监控系统、Tempra AI学术写作工具等开源项目。">
+    <meta property="og:site_name" content="CotZhang">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="og:image" content="https://cotzhang.cn/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://cotzhang.cn/">
+    <meta name="twitter:title" content="CotZhang - 个人开发者项目展示">
+    <meta name="twitter:description" content="CotZhang的个人开发者主页，展示Monitor智能设备监控系统、Tempra AI学术写作工具等开源项目。">
+    <meta name="twitter:image" content="https://cotzhang.cn/og-image.png">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#4361ee">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": "https://cotzhang.cn/#website",
+                "url": "https://cotzhang.cn/",
+                "name": "CotZhang",
+                "description": "CotZhang的个人主页，展示开源项目和技术作品",
+                "publisher": {
+                    "@id": "https://cotzhang.cn/#person"
+                },
+                "inLanguage": "zh-CN"
+            },
+            {
+                "@type": "Person",
+                "@id": "https://cotzhang.cn/#person",
+                "name": "CotZhang",
+                "url": "https://cotzhang.cn/",
+                "email": "cot@cotzhang.cn",
+                "sameAs": [
+                    "https://github.com/cotzhang"
+                ],
+                "jobTitle": "独立开发者",
+                "worksFor": {
+                    "@type": "Organization",
+                    "name": "CotZhang"
+                }
+            },
+            {
+                "@type": "WebPage",
+                "@id": "https://cotzhang.cn/#webpage",
+                "url": "https://cotzhang.cn/",
+                "name": "CotZhang - 个人开发者项目展示",
+                "isPartOf": {
+                    "@id": "https://cotzhang.cn/#website"
+                },
+                "about": {
+                    "@id": "https://cotzhang.cn/#person"
+                },
+                "description": "CotZhang的个人开发者主页，展示Monitor智能设备监控系统、Tempra AI学术写作工具等开源项目。",
+                "inLanguage": "zh-CN"
+            },
+            {
+                "@type": "SoftwareApplication",
+                "name": "Monitor",
+                "applicationCategory": "UtilitiesApplication",
+                "operatingSystem": "Android",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "CNY"
+                },
+                "description": "轻量级设备监控与管理系统，实时掌控手机使用状态。远程管理、应用拦截、使用统计。",
+                "url": "https://monitor.cotzhang.cn",
+                "author": {
+                    "@id": "https://cotzhang.cn/#person"
+                }
+            },
+            {
+                "@type": "SoftwareApplication",
+                "name": "Tempra",
+                "applicationCategory": "Productivity",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "CNY"
+                },
+                "description": "AI驱动的学术写作辅助与排版工具，支持智能辅助、模板套用、格式校验。",
+                "url": "https://tempra.chat",
+                "author": {
+                    "@id": "https://cotzhang.cn/#person"
+                }
+            }
+        ]
+    }
+    </script>
+
     <style>
         :root {
             --primary-color: #4361ee;
@@ -701,30 +818,32 @@
     </style>
 </head>
 <body>
-    <nav class="navbar" id="navbar">
-        <div class="navbar-content">
-            <a href="#" class="navbar-brand">CotZhang</a>
-            <ul class="navbar-links">
-                <li><a href="#home">首页</a></li>
-                <li><a href="#monitor">Monitor</a></li>
-                <li><a href="#tempra">Tempra</a></li>
-                <li><a href="#other-projects">其他项目</a></li>
-            </ul>
-            <span class="navbar-contact">cot@cotzhang.cn</span>
-        </div>
-    </nav>
+    <header>
+        <nav class="navbar" id="navbar" aria-label="主导航">
+            <div class="navbar-content">
+                <a href="#" class="navbar-brand" aria-label="CotZhang 首页">CotZhang</a>
+                <ul class="navbar-links" role="menubar">
+                    <li role="none"><a href="#home" role="menuitem">首页</a></li>
+                    <li role="none"><a href="#monitor" role="menuitem">Monitor</a></li>
+                    <li role="none"><a href="#papergen" role="menuitem">Tempra</a></li>
+                    <li role="none"><a href="#other-projects" role="menuitem">其他项目</a></li>
+                </ul>
+                <span class="navbar-contact" aria-label="联系邮箱">cot@cotzhang.cn</span>
+            </div>
+        </nav>
+    </header>
 
     <main>
-        <section class="hero-dual" id="home">
-            <div class="monitor-section" id="monitor">
+        <section class="hero-dual" id="home" aria-label="主要产品展示">
+            <article class="monitor-section" id="monitor" aria-labelledby="monitor-title">
                 <div class="monitor-content">
                     <div class="monitor-badge">
-                        <i class="fas fa-shield-alt"></i>
+                        <i class="fas fa-shield-alt" aria-hidden="true"></i>
                         智能设备管理
                     </div>
-                    <h2 class="monitor-title">Monitor</h2>
+                    <h2 class="monitor-title" id="monitor-title">Monitor</h2>
                     <p class="monitor-desc">轻量级设备监控与管理系统，实时掌控手机使用状态。远程管理、应用拦截、使用统计，让设备管理更智能、更高效。</p>
-                    <ul class="monitor-features">
+                    <ul class="monitor-features" aria-label="Monitor 主要功能">
                         <li>设备远程监控与实时状态查看</li>
                         <li>应用使用统计与时长追踪</li>
                         <li>智能应用拦截与白名单管理</li>
@@ -732,66 +851,66 @@
                         <li>RESTful API 与 MCP 集成支持</li>
                     </ul>
                     <div class="monitor-buttons">
-                        <a href="https://monitor.cotzhang.cn" class="btn-monitor-primary" target="_blank" rel="noopener noreferrer">
-                            <i class="fas fa-globe"></i>访问官网
+                        <a href="https://monitor.cotzhang.cn" class="btn-monitor-primary" target="_blank" rel="noopener noreferrer" aria-label="访问 Monitor 官方网站">
+                            <i class="fas fa-globe" aria-hidden="true"></i>访问官网
                         </a>
-                        <a href="https://github.com/cotzhang/Monitor" class="btn-monitor-secondary" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-github"></i>GitHub
+                        <a href="https://github.com/cotzhang/Monitor" class="btn-monitor-secondary" target="_blank" rel="noopener noreferrer" aria-label="查看 Monitor GitHub 仓库">
+                            <i class="fab fa-github" aria-hidden="true"></i>GitHub
                         </a>
-                        <a href="https://github.com/cotzhang/Monitor/releases" class="btn-monitor-secondary" target="_blank" rel="noopener noreferrer">
-                            <i class="fas fa-download"></i>下载
+                        <a href="https://github.com/cotzhang/Monitor/releases" class="btn-monitor-secondary" target="_blank" rel="noopener noreferrer" aria-label="下载 Monitor 应用">
+                            <i class="fas fa-download" aria-hidden="true"></i>下载
                         </a>
                     </div>
                 </div>
-            </div>
+            </article>
 
-            <div class="papergen-section" id="papergen">
+            <article class="papergen-section" id="papergen" aria-labelledby="papergen-title">
                 <div class="papergen-badge">
-                    <span class="material-symbols-outlined" style="font-size: 1rem;">auto_awesome</span>
+                    <span class="material-symbols-outlined" style="font-size: 1rem;" aria-hidden="true">auto_awesome</span>
                     AI 学术工具
                 </div>
-                <h2 class="papergen-title">Tempra</h2>
+                <h2 class="papergen-title" id="papergen-title">Tempra</h2>
                 <p class="papergen-desc">AI 驱动的学术写作辅助与排版工具，支持智能辅助、模板套用、格式校验。让学术写作更高效、更规范。</p>
 
-                <div class="papergen-cards">
-                    <div class="papergen-card">
-                        <span class="material-symbols-outlined papergen-card-icon">article</span>
-                        <div class="papergen-card-title">智能辅助</div>
-                        <div class="papergen-card-desc">基于 AI 模型提供学术写作辅助与内容建议</div>
+                <div class="papergen-cards" role="list" aria-label="Tempra 功能特性">
+                    <div class="papergen-card" role="listitem">
+                        <span class="material-symbols-outlined papergen-card-icon" aria-hidden="true">article</span>
+                        <h3 class="papergen-card-title">智能辅助</h3>
+                        <p class="papergen-card-desc">基于 AI 模型提供学术写作辅助与内容建议</p>
                     </div>
-                    <div class="papergen-card">
-                        <span class="material-symbols-outlined papergen-card-icon">description</span>
-                        <div class="papergen-card-title">模板套用</div>
-                        <div class="papergen-card-desc">内置多种学术模板，一键套用格式要求</div>
+                    <div class="papergen-card" role="listitem">
+                        <span class="material-symbols-outlined papergen-card-icon" aria-hidden="true">description</span>
+                        <h3 class="papergen-card-title">模板套用</h3>
+                        <p class="papergen-card-desc">内置多种学术模板，一键套用格式要求</p>
                     </div>
-                    <div class="papergen-card">
-                        <span class="material-symbols-outlined papergen-card-icon">spellcheck</span>
-                        <div class="papergen-card-title">格式校验</div>
-                        <div class="papergen-card-desc">自动检测并修正格式偏差，确保规范一致</div>
+                    <div class="papergen-card" role="listitem">
+                        <span class="material-symbols-outlined papergen-card-icon" aria-hidden="true">spellcheck</span>
+                        <h3 class="papergen-card-title">格式校验</h3>
+                        <p class="papergen-card-desc">自动检测并修正格式偏差，确保规范一致</p>
                     </div>
-                    <div class="papergen-card">
-                        <span class="material-symbols-outlined papergen-card-icon">download</span>
-                        <div class="papergen-card-title">多格式导出</div>
-                        <div class="papergen-card-desc">支持 PDF、DOCX 等多种格式一键导出</div>
+                    <div class="papergen-card" role="listitem">
+                        <span class="material-symbols-outlined papergen-card-icon" aria-hidden="true">download</span>
+                        <h3 class="papergen-card-title">多格式导出</h3>
+                        <p class="papergen-card-desc">支持 PDF、DOCX 等多种格式一键导出</p>
                     </div>
                 </div>
 
                 <div class="papergen-buttons">
-                    <a href="https://tempra.chat" class="btn-papergen-filled" target="_blank" rel="noopener noreferrer">
-                        <span class="material-symbols-outlined" style="font-size: 1rem;">open_in_new</span>访问官网
+                    <a href="https://tempra.chat" class="btn-papergen-filled" target="_blank" rel="noopener noreferrer" aria-label="访问 Tempra 官方网站">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;" aria-hidden="true">open_in_new</span>访问官网
                     </a>
                 </div>
-            </div>
+            </article>
         </section>
 
-        <section class="other-projects" id="other-projects">
+        <section class="other-projects" id="other-projects" aria-labelledby="other-projects-title">
             <div class="section-title">
-                <h2>更多项目</h2>
+                <h2 id="other-projects-title">更多项目</h2>
             </div>
 
-            <div class="cards-container">
+            <div class="cards-container" role="list" aria-label="其他开源项目">
                 <!-- Hypernet -->
-                <div class="card">
+                <article class="card" role="listitem">
                     <div class="card-header">
                         <h3 class="card-title">Hypernet</h3>
                         <p class="card-subtitle">与安卓手机共享高速网络连接</p>
@@ -800,17 +919,17 @@
                         <p class="card-description">一个高效的工具，让您的安卓设备能够轻松共享网络连接，提供更快的传输速度和更稳定的连接体验。</p>
                     </div>
                     <div class="card-footer">
-                        <a href="https://github.com/cotzhang/app.Cot-Hypernet2/releases" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-                            <i class="fas fa-download btn-icon"></i>立即下载
+                        <a href="https://github.com/cotzhang/app.Cot-Hypernet2/releases" class="btn btn-primary" target="_blank" rel="noopener noreferrer" aria-label="下载 Hypernet 应用">
+                            <i class="fas fa-download btn-icon" aria-hidden="true"></i>立即下载
                         </a>
-                        <a href="https://github.com/cotzhang/app.Cot-Hypernet2" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-github btn-icon"></i>项目地址
+                        <a href="https://github.com/cotzhang/app.Cot-Hypernet2" class="btn btn-secondary" target="_blank" rel="noopener noreferrer" aria-label="查看 Hypernet 项目地址">
+                            <i class="fab fa-github btn-icon" aria-hidden="true"></i>项目地址
                         </a>
                     </div>
-                </div>
+                </article>
 
                 <!-- PadPlus 2 -->
-                <div class="card" style="display: none;">
+                <article class="card" style="display: none;" role="listitem" aria-hidden="true">
                     <div class="card-header">
                         <h3 class="card-title">PadPlus 2 <span class="badge badge-warning">已终止维护</span></h3>
                         <p class="card-subtitle">用科技赋能教育</p>
@@ -819,20 +938,20 @@
                         <p class="card-description">睿易少年派平板桌面客户端，支持导出课件、题目作答、错题本查看导出、文件上传、观看课堂实录、在线答疑等功能，帮助学生利用平板更高效率学习。</p>
                     </div>
                     <div class="card-footer">
-                        <a href="https://cotzhang.cn/padplus2.html" class="btn btn-primary">
-                            <i class="fas fa-info-circle btn-icon"></i>查看详情
+                        <a href="https://cotzhang.cn/padplus2.html" class="btn btn-primary" aria-label="查看 PadPlus 2 详情">
+                            <i class="fas fa-info-circle btn-icon" aria-hidden="true"></i>查看详情
                         </a>
-                        <a href="https://github.com/cotzhang/app.Cot-Myipad-Plus" class="btn btn-secondary">
-                            <i class="fab fa-github btn-icon"></i>PadPlus项目
+                        <a href="https://github.com/cotzhang/app.Cot-Myipad-Plus" class="btn btn-secondary" aria-label="查看 PadPlus 项目">
+                            <i class="fab fa-github btn-icon" aria-hidden="true"></i>PadPlus项目
                         </a>
-                        <a href="https://github.com/cotzhang/Cot-Myipad-Plus-2" class="btn btn-secondary">
-                            <i class="fab fa-github btn-icon"></i>PadPlus2代码
+                        <a href="https://github.com/cotzhang/Cot-Myipad-Plus-2" class="btn btn-secondary" aria-label="查看 PadPlus 2 代码">
+                            <i class="fab fa-github btn-icon" aria-hidden="true"></i>PadPlus2代码
                         </a>
                     </div>
-                </div>
+                </article>
 
                 <!-- 中国象棋 -->
-                <div class="card">
+                <article class="card" role="listitem">
                     <div class="card-header">
                         <h3 class="card-title">中国象棋在线联机对战</h3>
                         <p class="card-subtitle">局域网象棋对弈服务器程序</p>
@@ -841,14 +960,14 @@
                         <p class="card-description">实现局域网中国象棋对弈的服务器，支持多房间同时游戏</p>
                     </div>
                     <div class="card-footer">
-                        <a href="https://github.com/cotzhang/app.Cot-Multiplayer-Chinese-Chess" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-github btn-icon"></i>项目地址
+                        <a href="https://github.com/cotzhang/app.Cot-Multiplayer-Chinese-Chess" class="btn btn-primary" target="_blank" rel="noopener noreferrer" aria-label="查看中国象棋项目地址">
+                            <i class="fab fa-github btn-icon" aria-hidden="true"></i>项目地址
                         </a>
                     </div>
-                </div>
+                </article>
 
                 <!-- PadMultiple -->
-                <div class="card" style="display: none;">
+                <article class="card" style="display: none;" role="listitem" aria-hidden="true">
                     <div class="card-header">
                         <h3 class="card-title">PadMultiple 桌面窗口管理器 <span class="badge badge-info">开发中</span></h3>
                         <p class="card-subtitle">触屏友好的桌面窗口管理器</p>
@@ -857,14 +976,14 @@
                         <p class="card-description">基于Web的，具有高度可拓展性、美观和可自定义的桌面窗口系统，支持引用应用商店并自定义web应用列表、更换壁纸等功能。</p>
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-disabled">
-                            <i class="fas fa-hourglass-half btn-icon"></i>敬请期待
+                        <button class="btn btn-disabled" aria-disabled="true">
+                            <i class="fas fa-hourglass-half btn-icon" aria-hidden="true"></i>敬请期待
                         </button>
                     </div>
-                </div>
+                </article>
 
                 <!-- RTSP动态检测 -->
-                <div class="card" style="display: none;">
+                <article class="card" style="display: none;" role="listitem" aria-hidden="true">
                     <div class="card-header">
                         <h3 class="card-title">RTSP动态检测 <span class="badge badge-info">开发中</span></h3>
                         <p class="card-subtitle">智能视频流解决方案</p>
@@ -873,14 +992,14 @@
                         <p class="card-description">对RTSP视频流进行实时区域动态检测，并提供js接口进行web界面的报警引用</p>
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-disabled">
-                            <i class="fas fa-hourglass-half btn-icon"></i>敬请期待
+                        <button class="btn btn-disabled" aria-disabled="true">
+                            <i class="fas fa-hourglass-half btn-icon" aria-hidden="true"></i>敬请期待
                         </button>
                     </div>
-                </div>
+                </article>
 
                 <!-- Online Wallpaper -->
-                <div class="card">
+                <article class="card" role="listitem">
                     <div class="card-header">
                         <h3 class="card-title">Online Wallpaper</h3>
                         <p class="card-subtitle">美化您的Windows桌面</p>
@@ -889,28 +1008,28 @@
                         <p class="card-description">为Windows10自动更换精美壁纸，每日更新高质量背景图片，让您的桌面始终保持新鲜感。</p>
                     </div>
                     <div class="card-footer">
-                        <a href="https://github.com/cotzhang/app.Cot-Online-Wallpaper/releases" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-                            <i class="fas fa-download btn-icon"></i>立即下载
+                        <a href="https://github.com/cotzhang/app.Cot-Online-Wallpaper/releases" class="btn btn-primary" target="_blank" rel="noopener noreferrer" aria-label="下载 Online Wallpaper 应用">
+                            <i class="fas fa-download btn-icon" aria-hidden="true"></i>立即下载
                         </a>
-                        <a href="https://github.com/cotzhang/app.Cot-Online-Wallpaper" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-github btn-icon"></i>项目卡片
+                        <a href="https://github.com/cotzhang/app.Cot-Online-Wallpaper" class="btn btn-secondary" target="_blank" rel="noopener noreferrer" aria-label="查看 Online Wallpaper 项目卡片">
+                            <i class="fab fa-github btn-icon" aria-hidden="true"></i>项目卡片
                         </a>
                     </div>
-                </div>
+                </article>
 
 
             </div>
 
-            <div class="accordion" style="display: none;">
-                <div class="accordion-header">
+            <div class="accordion" style="display: none;" aria-hidden="true">
+                <div class="accordion-header" role="button" tabindex="0" aria-expanded="false" aria-controls="tools-content">
                     <h3 class="accordion-title">小工具</h3>
-                    <i class="fas fa-chevron-down accordion-icon"></i>
+                    <i class="fas fa-chevron-down accordion-icon" aria-hidden="true"></i>
                 </div>
-                <div class="accordion-content">
+                <div class="accordion-content" id="tools-content">
                     <div class="tool-card">
                         <h4 class="tool-title">广州中学奥鸽平板在线答疑登录器</h4>
-                        <a href="https://cotzhang.cn/zxdy" class="btn btn-primary">
-                            <i class="fas fa-external-link-alt btn-icon"></i>打开
+                        <a href="https://cotzhang.cn/zxdy" class="btn btn-primary" aria-label="打开答疑登录器">
+                            <i class="fas fa-external-link-alt btn-icon" aria-hidden="true"></i>打开
                         </a>
                     </div>
                 </div>
@@ -918,9 +1037,9 @@
         </section>
     </main>
 
-    <footer>
+    <footer role="contentinfo">
         <p>© 2026 CotZhang. 保留所有权利.</p>
-        <p class="contact">联系方式：cot@cotzhang.cn</p>
+        <p class="contact">联系方式：<a href="mailto:cot@cotzhang.cn" style="color: inherit;">cot@cotzhang.cn</a></p>
         <p><a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer" style="color: inherit;">粤ICP备2026046518号</a></p>
     </footer>
 
