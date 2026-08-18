@@ -307,25 +307,22 @@
             font-size: 0.875rem;
             font-weight: 600;
             letter-spacing: 0.02em;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1rem;
         }
 
         .monitor-badge .material-symbols-outlined {
             font-size: 18px;
         }
 
-        /* 模式徽章：对齐 manage-web .hero-mode__badge */
-        .monitor-mode-badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 4px 12px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.16);
-            border: 1px solid rgba(255, 255, 255, 0.30);
-            font-size: 0.875rem;
+        /* 产品副标题：承接标题，弱化但保持可读 */
+        .monitor-subtitle {
+            font-size: 1.125rem;
             font-weight: 600;
-            letter-spacing: 0.02em;
-            margin-bottom: 0.75rem;
+            line-height: 1.4;
+            color: rgba(255, 255, 255, 0.95);
+            margin: -0.25rem 0 1rem;
+            letter-spacing: 0.04em;
+            opacity: 0.92;
         }
 
         /* 标题：对齐 manage-web .hero-mode__title (headline-large) */
@@ -334,18 +331,17 @@
             font-weight: 700;
             line-height: 1.25;
             letter-spacing: -0.02em;
-            margin: 0 0 1rem;
+            margin: 0 0 0.35rem;
             text-shadow: 0 2px 16px rgba(14, 26, 18, 0.18);
         }
 
         /* 描述：对齐 manage-web .hero-mode__desc */
         .monitor-desc {
             font-size: 1rem;
-            line-height: 1.75;
-            color: #ffffff;
-            opacity: 0.92;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.95);
             margin: 0 0 1.5rem;
-            max-width: 480px;
+            max-width: 520px;
         }
 
         /* 功能标签：对齐 manage-web .hero-mode__chips */
@@ -355,23 +351,32 @@
             flex-wrap: wrap;
             gap: 0.5rem;
             padding: 0;
-            margin: 0 0 2rem;
+            margin: 0 0 1.75rem;
         }
 
         .monitor-features li {
-            padding: 4px 12px;
+            padding: 5px 13px;
             border-radius: 999px;
-            background: rgba(255, 255, 255, 0.14);
-            border: 1px solid rgba(255, 255, 255, 0.22);
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.24);
             color: #ffffff;
             font-size: 0.875rem;
             font-weight: 500;
+            -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
+            transition: background-color 0.18s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .monitor-features li:hover {
+            background: rgba(255, 255, 255, 0.20);
+            border-color: rgba(255, 255, 255, 0.36);
         }
 
         .monitor-buttons {
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
+            align-items: center;
         }
 
         /* 主按钮：对齐 manage-web .hero-mode__action（白底深字实心） */
@@ -1011,8 +1016,8 @@
                         <span class="material-symbols-outlined" aria-hidden="true">verified_user</span>
                         自律 + 管控 · 双模式智能守护
                     </div>
-                    <span class="monitor-mode-badge">Monitor · 智能设备管控平台</span>
                     <h2 class="monitor-title" id="monitor-title">Monitor</h2>
+                    <p class="monitor-subtitle">智能设备管控平台</p>
                     <p class="monitor-desc">基于 DeviceOwner 底层权限的智能设备管控平台，覆盖界面级内容管控、AI 实时检测、行为报告与 MonitorClaw。自律可量化、管控可落地，从纳管到审批形成守护闭环。</p>
                     <ul class="monitor-features" aria-label="Monitor 核心能力">
                         <li>界面级管控</li>
@@ -1085,11 +1090,11 @@
                         <p class="padplus-card__lead">用科技赋能教育</p>
                         <p class="padplus-card__desc">睿易少年派平板桌面客户端，支持导出课件、题目作答、错题本查看导出、文件上传、观看课堂实录、在线答疑等功能，帮助学生利用平板更高效率学习。</p>
                         <div class="padplus-card__actions">
-                            <a href="padplus2.html" class="btn-padplus-primary" target="_blank" rel="noopener noreferrer" aria-label="了解并下载 PadPlus 2">
-                                <i class="fas fa-download" aria-hidden="true"></i>立即下载
+                            <a href="padplus2.html" class="btn-padplus-primary" target="_blank" rel="noopener noreferrer" aria-label="进入 PadPlus 2 官网">
+                                <i class="fas fa-globe" aria-hidden="true"></i>进入官网
                             </a>
-                            <a href="padplus2.html" class="btn-padplus-ghost" target="_blank" rel="noopener noreferrer" aria-label="PadPlus 2 网页版登录">
-                                <i class="fas fa-sign-in-alt" aria-hidden="true"></i>网页版登录
+                            <a href="/download.html" class="btn-padplus-ghost" target="_blank" rel="noopener noreferrer" aria-label="PadPlus 2 立即下载">
+                                <i class="fas fa-download" aria-hidden="true"></i>立即下载
                             </a>
                         </div>
                     </div>
